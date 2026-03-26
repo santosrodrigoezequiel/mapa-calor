@@ -90,7 +90,7 @@ export default function App() {
         <div className="header-inner">
           <span className="logo">🗺️</span>
           <div>
-            <h1>Mapa de Calor | CSV</h1>
+            <h1>Mapa de Calor | Data viewer</h1>
             <p>Generá mapas de calor interactivos a partir de coordenadas en un CSV</p>
           </div>
         </div>
