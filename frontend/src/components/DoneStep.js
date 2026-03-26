@@ -14,14 +14,23 @@ const PALETA_LABELS = {
 export default function DoneStep({ jobInfo, config, mapHtml, onDownload, onReset }) {
   const iframeRef = useRef();
 
-  useEffect(() => {
-    if (iframeRef.current && mapHtml) {
-      const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
-      doc.open();
-      doc.write(mapHtml);
-      doc.close();
-    }
-  }, [mapHtml]);
+useEffect(() => {
+  if (iframeRef.current && mapHtml) {
+    const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+    // Inyectar CSS que fuerza el mapa a llenar todo el iframe
+    const htmlFull = mapHtml.replace(
+      '</head>',
+      `<style>
+        html, body { height: 100% !important; margin: 0 !important; padding: 0 !important; }
+        #map { height: 100% !important; min-height: 100% !important; }
+        .folium-map { height: 100% !important; }
+      </style></head>`
+    );
+    doc.open();
+    doc.write(htmlFull);
+    doc.close();
+  }
+}, [mapHtml]);
 
   return (
     <div className="card card-done">
