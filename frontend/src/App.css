@@ -69,7 +69,7 @@ body {
   border-radius: var(--radius);
   padding: 32px;
   width: 100%;
-  max-width: 960px;
+  max-width: 660px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -301,7 +301,7 @@ body {
 /* ── Mapa embed ───────────────────────────────────────────────────────────── */
 .map-container {
   width: 100%;
-  height: 600px;
+  height: 620px;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
