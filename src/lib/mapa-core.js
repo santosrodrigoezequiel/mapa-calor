@@ -49,10 +49,13 @@ export function construirMapa(L, contenedor, datos) {
     preferCanvas: true,
   });
 
+  // maxNativeZoom: el basemap no llega a z19. Sin esto, acercar de más deja el
+  // fondo en blanco en vez de escalar el último tile disponible.
   L.tileLayer(paleta.tiles, {
     attribution: datos.atribucion || '',
     subdomains: 'abcd',
     maxZoom: 19,
+    maxNativeZoom: paleta.maxNativeZoom || 19,
   }).addTo(mapa);
 
   // ── Bordes ────────────────────────────────────────────────────────────────

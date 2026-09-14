@@ -32,11 +32,22 @@ export const PROVINCIAS_POR_REGION = {
   usa: 'usa',
 };
 
+/**
+ * Basemap: Esri Gray Canvas.
+ *
+ * Antes esto apuntaba a CARTO (basemaps.cartocdn.com). CARTO pasó a exigir API
+ * key y devuelve el tile con un watermark "API KEY REQUIRED" dibujado encima,
+ * con HTTP 200 — así que no falla, se ve mal. Esri sirve el mismo estilo sin
+ * key. Ojo con el orden de la ruta: ArcGIS es {z}/{y}/{x}, no {z}/{x}/{y}.
+ */
+const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
+
 export const PALETAS = {
   oscuro: {
     fondo: '#434343',
     bordes: '#5c3675',
-    tiles: 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png',
+    tiles: `${ESRI}/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+    maxNativeZoom: 16,
     gradient: {
       0.0: 'transparent',
       0.2: '#2d1040',
@@ -48,7 +59,8 @@ export const PALETAS = {
   clasico: {
     fondo: '#757b89',
     bordes: '#5c3675',
-    tiles: 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+    tiles: `${ESRI}/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`,
+    maxNativeZoom: 16,
     gradient: {
       0.0: 'transparent',
       0.2: 'blue',
@@ -60,4 +72,4 @@ export const PALETAS = {
 };
 
 export const ATRIBUCION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, DeLorme, NAVTEQ';
