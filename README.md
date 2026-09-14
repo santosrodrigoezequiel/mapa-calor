@@ -2,9 +2,6 @@
 
 Genera mapas de calor interactivos a partir de un CSV con coordenadas geográficas.
 
-**Todo corre en el browser.** No hay backend: el deploy es GitHub + Vercel, estático,
-sin funciones serverless y sin nada que se pueda apagar.
-
 ## Formato del CSV
 
 Las columnas se leen por posición, no por nombre. El encabezado puede decir cualquier cosa.
